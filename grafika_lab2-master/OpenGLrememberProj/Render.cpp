@@ -59,35 +59,9 @@ double G_texture[] = { 0.309, 0.078 };
 double H_texture[] = { 0.461, 0.461 };
 double pointC_texture[] = { 0.769, 0.691 };
 
+double lineUp[] = { 0.239, 0.638 };
+double lineBottom[] = { 0.541, 0.331 };
 
-
-double Ab_texture[] = { 0.0, 0.0 };
-double Bb_texture[] = { 0.0, 0.0 };
-double Cb_texture[] = { 0.0, 0.0 };
-double Db_texture[] = { 0.0, 0.0 };
-double Eb_texture[] = { 0.0, 0.0 };
-double Fb_texture[] = { 0.0, 0.0 };
-
-
-double Gb_texture[] = { 0.0, 0.0 };
-double Hb_texture[] = { 0.0, 0.0 };
-
-double A1b_texture[] = { 0.0, 0.0 };
-double B1b_texture[] = { 0.0, 0.0 };
-double C1b_texture[] = { 0.0, 0.0 };
-double D1b_texture[] = { 0.0, 0.0 };
-double E1b_texture[] = { 0.0, 0.0 };
-double F1b_texture[] = { 0.0, 0.0 };
-
-double G1b_texture[] = { 0.0, 0.0 };
-double H1b_texture[] = { 0.0, 0.0 };
-
-
-double F1add_texture[] = { 0.0, 0.0 };
-double Fadd_texture[] = { 0.0, 0.0 };
-
-double A1add_texture[] = { 0.0, 0.0 };
-double Aadd_texture[] = { 0.0, 0.0 };
 
 
 //класс для настройки камеры
@@ -756,8 +730,8 @@ void round(double step, double pointA[], double pointB[], double pointC[])
 
 
 
-	double vect_ABT[] = { (-0.891 + 0.739), 0.225 - 0.245 };
-	double centreT[] = { (0.891 + 0.739) / 2,  (0.225 + 0.245) / 2 };
+	double vect_ABT[] = { F1_texture[0] - G1_texture[0], F1_texture[1] - G1_texture[1] };
+	double centreT[] = { (F1_texture[0] + G1_texture[0]) / 2,  (F1_texture[1] + G1_texture[1]) / 2 };
 
 	double lengthT = sqrt(vect_ABT[0] * vect_ABT[0] + vect_ABT[1] * vect_ABT[1]);
 
@@ -766,8 +740,8 @@ void round(double step, double pointA[], double pointB[], double pointC[])
 
 
 
-	double vect_ABT1[] = { (0.302 - 0.453), 0.225 - 0.245 };
-	double centreT1[] = { (0.302 + 0.453) / 2,  (0.225 + 0.245) / 2 };
+	double vect_ABT1[] = { F1_texture[0] - G1_texture[0], F1_texture[1] - G1_texture[1] };
+	double centreT1[] = { (F1_texture[0] + G1_texture[0]) / 2,  (F1_texture[1] + G1_texture[1]) / 2 };
 
 	double lengthT1 = sqrt(vect_ABT1[0] * vect_ABT1[0] + vect_ABT1[1] * vect_ABT1[1]);
 
@@ -889,10 +863,10 @@ void roundIn(double step, double pointA[], double pointB[], double pointC[], dou
 	double Fi2 = 0.7 - acos((-pointB[0]) / (sqrt(pow(pointB[0], 2) + pow(pointB[1], 2))));
 
 
-	double c1_tex = sqrt(pow((0.407 - 0.258), 2) + pow((0.582 - 0.490), 2));//длины
-	double a1_tex = sqrt(pow((0.365 - 0.407), 2) + pow((0.513 - 0.582), 2));//сторон
-	double b1_tex = sqrt(pow((0.258 - 0.365), 2) + pow((0.490 - 0.513), 2));//треугольника
-	double s1_tex = 0.5 * abs(0.258 * (0.582 - 0.513) - 0.490 * (0.407 - 0.365) + 0.407 * 0.513 - 0.582 * 0.365);//площадь треуг
+	double c1_tex = sqrt(pow((B_texture[0] - A_texture[0]), 2) + pow((B_texture[1] - A_texture[1]), 2));//длины
+	double a1_tex = sqrt(pow((pointC_texture[0] - B_texture[0]), 2) + pow((pointC_texture[1] - B_texture[1]), 2));//сторон
+	double b1_tex = sqrt(pow((A_texture[0] - pointC_texture[0]), 2) + pow((A_texture[1] - pointC_texture[1]), 2));//треугольника
+	double s1_tex = 0.5 * abs(A_texture[0] * (B_texture[1] - pointC_texture[1]) - A_texture[1] * (B_texture[0] - pointC_texture[0]) + B_texture[0] * pointC_texture[1] - B_texture[1] * pointC_texture[0]);//площадь треуг
 
 	double radius1_tex = (a1_tex * b1_tex * c1_tex) / (4 * s1_tex);//радиус описанной окр
 
